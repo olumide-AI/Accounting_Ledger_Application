@@ -20,15 +20,13 @@ public class Main {
 
         while(true){
             System.out.println("Welcome to the Home screen");
-            String homeScreen = """
-                    Select the following actions:
-                    D - Select to access depsoit information
-                    P - Make debit payment
-                    L - Display ledger screen
-                    X - To exit your account
-                    """;
-            String userInput = scanner.nextLine().toUpperCase().trim();
-            switch(userInput) {
+            System.out.println("Please select the following options");
+            System.out.println("D - Add deposit information");
+            System.out.println("P - Make debit payment");
+            System.out.println("L - Display ledger screen");
+            System.out.println("E - Exit the application");
+            String userInputHomeScreen = scanner.nextLine().toUpperCase().trim();
+            switch(userInputHomeScreen) {
                 case "D":
                     ;//Add deposit method
                     break;
@@ -46,9 +44,8 @@ public class Main {
                     System.out.println("Please enter option D,P,L or X");
             }
         }
-
     }
-    public static void ledger(){
+    public static void ledger(Scanner scanner){
         /*
                     A) All - Display all entries
             o D) Deposits - Display only the entries that are deposits into the
@@ -67,6 +64,35 @@ public class Main {
          */
         while (true){
             System.out.println("Display all entries");
+            System.out.println("Please select the following options");
+            System.out.println("A - Display all entries");
+            System.out.println("D - Display deposit information");
+            System.out.println("P - Display debit payment");
+            System.out.println("R - Display custom report screen");
+            System.out.println("H - Go back to the Home screen");
+            String userInputLedger = scanner.nextLine().toUpperCase().trim();
+            switch (userInputLedger){
+                case "A":
+                    ;//Include all entries display
+                    break;
+                case "D":
+                    ;//Display entries deposited into the account
+                    break;
+                case "P":
+                    ;//Display payments(negative entries)
+                    break;
+                case "R":
+                    ;//New Screen Method
+                    break;
+                case "H":
+                    ;//Go back to the home page
+                    break;
+                default:
+                    System.out.println("Please enter option - A,D,P,R,or H");
+
+            }
+
         }
     }
+    //Reports 
 }
