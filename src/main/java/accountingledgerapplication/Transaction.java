@@ -62,6 +62,6 @@ public class Transaction {
         return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
     }
 
-    //User Display 
+    //User Display
 
 }
