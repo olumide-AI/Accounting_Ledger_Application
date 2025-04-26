@@ -58,8 +58,10 @@ public class Transaction {
         this.amount = amount;
     }
     //Display method with appropriate format
-    public void displayTransactionFormat(){
-        System.out.println(date + "|" + time + "|" + description + "|" + vendor + "|" + amount);
+    public String displayTransactionFormat(){
+        return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
     }
+
+    //User Display 
 
 }
