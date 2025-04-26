@@ -1,5 +1,8 @@
 package accountingledgerapplication;
 
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -120,4 +123,23 @@ public class Main {
 
         }
     }
+
+    //Add Deposit method
+    //use scanner to retrieve info. What info Just deposit? is deposit information just transaction info
+    //if so i just create new transaction
+    public static Transaction addDepositInformation(){
+        System.out.println("What date is your transaction: ");
+        String date = scanner.nextLine();
+        System.out.println("What time was your transaction: ");
+        String time = scanner.nextLine();
+        System.out.println("What is your transaction description: ");
+        String description = scanner.nextLine();
+        System.out.println("What is your transaction vendor name: ");
+        String vendor = scanner.nextLine();
+        System.out.println("What was the amount: ");
+        double amount = Double.parseDouble(scanner.nextLine());
+        return new Transaction(date, time, description, vendor, amount);
+    }
+
+    //Write the user deposit information to file
 }
