@@ -5,19 +5,8 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        /*
-                • Home Screen
-    o The home screen should give the user the following options. The
-    application should continue to run until the user chooses to exit.
-    § D) Add Deposit - prompt user for the deposit information and
-    save it to the csv file
-    § P) Make Payment (Debit) - prompt user for the debit
-    information and save it to the csv file
-    § L) Ledger - display the ledger screen
-    § X) Exit - exit the application
-         */
-        //Create a main Home screen
 
+        //Create a main Home screen
         while(true){
             System.out.println("Welcome to the Home screen");
             System.out.println("Please select the following options");
@@ -45,7 +34,7 @@ public class Main {
             }
         }
     }
-    public static void ledger(Scanner scanner){
+    public static void ledgerHomeScreen(Scanner scanner){
         /*
                     A) All - Display all entries
             o D) Deposits - Display only the entries that are deposits into the
@@ -94,5 +83,41 @@ public class Main {
 
         }
     }
-    //Reports 
+    //Reports Screen
+    public static void reportHomeScreen(Scanner scanner){
+        while (true){
+            System.out.println("Run your custom search on your report");
+            System.out.println("Please select the following options");
+            System.out.println("1 - Display Month to Date information");
+            System.out.println("2 - Display previous month information");
+            System.out.println("3 - Display year to date information");
+            System.out.println("4 - Display previous year information");
+            System.out.println("5 - To search by vendor");
+            System.out.println("0 - Go back to the Ledger screen"); //The book says report
+            int userInputReport = scanner.nextInt();
+            scanner.nextLine();
+            switch (userInputReport){
+                case 1:
+                    ;//Month to date report
+                    break;
+                case 2:
+                    ;//previous month report
+                    break;
+                case 3:
+                    ;//year to date report
+                    break;
+                case 4:
+                    ;//previous year report
+                    break;
+                case 5:
+                    ;//Vendor specific report
+                    break;
+                case 0:
+                    ;//Go back to report or ledger page?
+                default:
+                    System.out.println("Please enter option - 1,2,3,4,5, or 0");
+            }
+
+        }
+    }
 }
