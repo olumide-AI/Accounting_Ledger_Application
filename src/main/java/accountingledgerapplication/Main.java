@@ -1,16 +1,18 @@
 package accountingledgerapplication;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
 
         //Create a main Home screen
-        while(true){
+        while (true) {
             System.out.println("Welcome to the Home screen");
             System.out.println("Please select the following options");
             System.out.println("D - Add deposit information");
@@ -18,7 +20,7 @@ public class Main {
             System.out.println("L - Display ledger screen");
             System.out.println("E - Exit the application");
             String userInputHomeScreen = scanner.nextLine().toUpperCase().trim();
-            switch(userInputHomeScreen) {
+            switch (userInputHomeScreen) {
                 case "D":
                     ;//Add deposit method
                     break;
@@ -37,7 +39,8 @@ public class Main {
             }
         }
     }
-    public static void ledgerHomeScreen(Scanner scanner){
+
+    public static void ledgerHomeScreen(Scanner scanner) {
         /*
                     A) All - Display all entries
             o D) Deposits - Display only the entries that are deposits into the
@@ -54,7 +57,7 @@ public class Main {
             § 0) Back - go back to the report page
             o H) Home - go back to the home page
          */
-        while (true){
+        while (true) {
             System.out.println("Display all entries");
             System.out.println("Please select the following options");
             System.out.println("A - Display all entries");
@@ -63,7 +66,7 @@ public class Main {
             System.out.println("R - Display custom report screen");
             System.out.println("H - Go back to the Home screen");
             String userInputLedger = scanner.nextLine().toUpperCase().trim();
-            switch (userInputLedger){
+            switch (userInputLedger) {
                 case "A":
                     ;//Include all entries display
                     break;
@@ -86,9 +89,10 @@ public class Main {
 
         }
     }
+
     //Reports Screen
-    public static void reportHomeScreen(Scanner scanner){
-        while (true){
+    public static void reportHomeScreen(Scanner scanner) {
+        while (true) {
             System.out.println("Run your custom search on your report");
             System.out.println("Please select the following options");
             System.out.println("1 - Display Month to Date information");
@@ -99,7 +103,7 @@ public class Main {
             System.out.println("0 - Go back to the Ledger screen"); //The book says report
             int userInputReport = scanner.nextInt();
             scanner.nextLine();
-            switch (userInputReport){
+            switch (userInputReport) {
                 case 1:
                     ;//Month to date report
                     break;
@@ -127,7 +131,7 @@ public class Main {
     //Add Deposit method
     //use scanner to retrieve info. What info Just deposit? is deposit information just transaction info
     //if so i just create new transaction
-    public static Transaction addDepositInformation(){
+    public static Transaction addDepositInformation() {
         System.out.println("What date is your transaction: ");
         String date = scanner.nextLine();
         System.out.println("What time was your transaction: ");
@@ -142,4 +146,13 @@ public class Main {
     }
 
     //Write the user deposit information to file
+    public static void writeTransactionsToFile(List<Transaction> transactionEntry) {
+        try (FileWriter fileWriter = new FileWriter("transactionFolder/transaction.csv", true)) {
+            for (int i = 0; i < transactionEntry.size(); i++) {
+                fileWriter.write(transactionEntry.get(i).displayTransactionFormat() + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Oh no: " + e.getMessage());
+        }
+    }
 }
