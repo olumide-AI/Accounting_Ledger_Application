@@ -172,5 +172,11 @@ public class Main {
         return new Transaction(date, time, description, vendor, amount);
     }
 
-    //Ledger displays all entries, so we read from the csv file 
+    //Ledger displays all entries, so we read from the csv file
+    public static void displayAllEntries(List<Transaction> transactionEntry){
+        for (int i = 0; i < transactionEntry.size(); i++){
+            Transaction consoleDisplayAllEntries = transactionEntry.get(i);
+            System.out.println(consoleDisplayAllEntries.displayTransactionFormat());
+        }
+    }
 }

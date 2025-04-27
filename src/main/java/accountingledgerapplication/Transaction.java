@@ -59,9 +59,10 @@ public class Transaction {
     }
     //Display method with appropriate format
     public String displayTransactionFormat(){
-        return date + "|" + time + "|" + description + "|" + vendor + "|" + amount;
+        return getDate() + "|" + getTime() + "|" + getDescription() + "|" + getVendor() + "|" + getAmount();
     }
 
     //User Display
+
 
 }
