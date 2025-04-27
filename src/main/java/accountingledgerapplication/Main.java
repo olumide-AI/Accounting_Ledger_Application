@@ -155,4 +155,22 @@ public class Main {
             System.out.println("Oh no: " + e.getMessage());
         }
     }
+
+    //Debit payment information (will include "-" price)
+    //We can call the writeTransactionsToFile() method to write it into our csv file
+    public static Transaction addDebitPaymentInformation() {
+        System.out.println("What date is your transaction: ");
+        String date = scanner.nextLine();
+        System.out.println("What time was your transaction: ");
+        String time = scanner.nextLine();
+        System.out.println("What is your transaction description: ");
+        String description = scanner.nextLine();
+        System.out.println("What is your transaction vendor name: ");
+        String vendor = scanner.nextLine();
+        System.out.println("What was the amount (with a negative for debit ): ");
+        double amount = Double.parseDouble(scanner.nextLine());
+        return new Transaction(date, time, description, vendor, amount);
+    }
+
+    //Ledger displays all entries, so we read from the csv file 
 }
