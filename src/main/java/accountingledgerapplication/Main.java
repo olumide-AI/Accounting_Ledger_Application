@@ -179,4 +179,24 @@ public class Main {
             System.out.println(consoleDisplayAllEntries.displayTransactionFormat());
         }
     }
+
+    //Display only entries deposited into the account (positive entries)
+    public static void displayDeposit(List<Transaction> transactionEntry){
+        for (int i = 0; i < transactionEntry.size(); i++){
+            if (transactionEntry.get(i).getAmount() > 0){
+                System.out.println(transactionEntry.get(i).displayTransactionFormat());
+            }
+        }
+
+    }
+
+    //Display only debits entries
+    public static void displayDebitPayment(List<Transaction> transactionEntry){
+        for (int i = 0; i < transactionEntry.size(); i++){
+            if (transactionEntry.get(i).getAmount() < 0){
+                System.out.println(transactionEntry.get(i).displayTransactionFormat());
+            }
+        }
+
+    }
 }
