@@ -205,23 +205,23 @@ public class Main {
     //Method that display only deposit transaction to console
     public static void displayDepositEntries(){
         List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
-        System.out.println("Here is all the transaction for your account: ");
+        System.out.println("Here is all the Deposit transaction entries for your account: ");
         for (int i = 0; i < transactionList.size(); i++){
             if (transactionList.get(i).getAmount() > 0){
                 System.out.println(transactionList.get(i).displayTransactionFormat());
             }
-
         }
     }
 
 
     //Display only debits entries
-    public static void displayDebitPayment(List<Transaction> transactionEntry){
-        for (int i = 0; i < transactionEntry.size(); i++){
-            if (transactionEntry.get(i).getAmount() < 0){
-                System.out.println(transactionEntry.get(i).displayTransactionFormat());
+    public static void displayDebitPaymentEntries(){
+        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        System.out.println("Here is all the Debit transaction entries for your account: ");
+        for (int i = 0; i < transactionList.size(); i++){
+            if (transactionList.get(i).getAmount() < 0){
+                System.out.println(transactionList.get(i).displayTransactionFormat());
             }
         }
-
     }
 }
