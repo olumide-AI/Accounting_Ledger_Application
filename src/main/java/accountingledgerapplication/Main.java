@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -226,6 +227,14 @@ public class Main {
     }
 
     //Custom search to filter from month to date
+    public static void monthToDateOnlyEntries(){
+        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        for (int i = 0; i < transactionList.size(); i++){
+            if (transactionList.get(i).getDate().getMonth() == LocalDate.now().getMonth() && transactionList.get(i).getDate().getYear() == LocalDate.now().getYear()){
+                System.out.println(transactionList.get(i).displayTransactionFormat());
+            }
+        }
+    }
 
     //Custom search by vendor name
     //Use .equals or if a line contains this user input print it out
