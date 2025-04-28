@@ -1,5 +1,7 @@
 package accountingledgerapplication;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public class Main {
                 case "L":
                     ;//Display ledger
                     break;
-                case "X":
+                case "E":
                     System.out.println("Thank you, goodbye");
                     ;//Exit
                     break;
@@ -172,23 +174,35 @@ public class Main {
         return new Transaction(date, time, description, vendor, amount);
     }
 
-    //Ledger displays all entries, so we read from the csv file
-    public static void displayAllEntries(List<Transaction> transactionEntry){
-        for (int i = 0; i < transactionEntry.size(); i++){
-            Transaction consoleDisplayAllEntries = transactionEntry.get(i);
+    //Read transaction from transaction file
+    public static List<Transaction> readAllEntries(String filename){
+        //initalize empty list to store transations
+        List<Transaction> transactionList = new ArrayList<>();
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))){
+            String line;
+            while((line = bufferedReader.readLine()) != null){
+                String[] splitPerEntries = line.split("\\|");
+                Transaction transaction = new Transaction(splitPerEntries[0], splitPerEntries[1], splitPerEntries[2], splitPerEntries[3], Double.parseDouble(splitPerEntries[4]));
+                transactionList.add(transaction);
+            }
+        }
+        catch (IOException e){
+            System.out.println("Problem: " + e.getMessage());
+        }
+        return transactionList;
+    }
+
+    //Ledger displays all entries, so we read from the csv file using buffered reader
+    public static void displayAllEntries(){
+        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        for (int i = 0; i < transactionList.size(); i++){
+            Transaction consoleDisplayAllEntries = transactionList.get(i);
             System.out.println(consoleDisplayAllEntries.displayTransactionFormat());
         }
     }
 
-    //Display only entries deposited into the account (positive entries)
-    public static void displayDeposit(List<Transaction> transactionEntry){
-        for (int i = 0; i < transactionEntry.size(); i++){
-            if (transactionEntry.get(i).getAmount() > 0){
-                System.out.println(transactionEntry.get(i).displayTransactionFormat());
-            }
-        }
+    //Method that display transaction to console
 
-    }
 
     //Display only debits entries
     public static void displayDebitPayment(List<Transaction> transactionEntry){

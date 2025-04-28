@@ -57,12 +57,14 @@ public class Transaction {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
     //Display method with appropriate format
     public String displayTransactionFormat(){
         return getDate() + "|" + getTime() + "|" + getDescription() + "|" + getVendor() + "|" + getAmount();
     }
 
     //User Display
+
 
 
 }
