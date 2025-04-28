@@ -192,7 +192,7 @@ public class Main {
         return transactionList;
     }
 
-    //Ledger displays all entries, so we read from the csv file using buffered reader
+    //Ledger displays all entries, so we read from the csv file using buffered reader method
     public static void displayAllEntries(){
         List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
         System.out.println("Here is all the transaction for your account: ");
@@ -202,7 +202,17 @@ public class Main {
         }
     }
 
-    //Method that display transaction to console
+    //Method that display only deposit transaction to console
+    public static void displayDepositEntries(){
+        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        System.out.println("Here is all the transaction for your account: ");
+        for (int i = 0; i < transactionList.size(); i++){
+            if (transactionList.get(i).getAmount() > 0){
+                System.out.println(transactionList.get(i).displayTransactionFormat());
+            }
+
+        }
+    }
 
 
     //Display only debits entries
