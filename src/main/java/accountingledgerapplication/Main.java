@@ -236,7 +236,7 @@ public class Main {
     }
 
     //Previous month filter
-    //Edge case if jan 2025 - dec 2024 
+    //Edge case if jan 2025 - dec 2024
     public static void previousMonthEntries() {
         List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
         for (int i = 0; i < transactionList.size(); i++) {
@@ -248,8 +248,15 @@ public class Main {
 
     //year to date filter
     public static void yearToDateOnlyEntries(){
+        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        for (Transaction transaction : transactionList){
+            if (transaction.getDate().getYear() == LocalDate.now().getYear()){
+                System.out.println(transaction.displayTransactionFormat());
+            }
+        }
 
     }
+    
 
     //Custom search by vendor name
     //Use .equals or if a line contains this user input print it out
