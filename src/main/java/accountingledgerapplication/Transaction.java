@@ -1,36 +1,40 @@
 package accountingledgerapplication;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 public class Transaction {
     //Should Date and time be type datetime
-    private String date;
-    private String time;
+    private LocalDate date;
+    private LocalTime time;
     private String description;
     private String vendor;
     private double amount;
 
     //Create constructor
     public Transaction(String date, String time, String description, String vendor, double amount){
-        this.date = date;
-        this.time = time;
+        this.date = LocalDate.parse(date);
+        this.time = LocalTime.parse(time);
         this.description = description;
         this.vendor = vendor;
         this.amount = amount;
     }
     //Getters and Setters
 
-    public String getDate() {
+
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
-    public String getTime() {
+    public LocalTime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalTime time) {
         this.time = time;
     }
 
