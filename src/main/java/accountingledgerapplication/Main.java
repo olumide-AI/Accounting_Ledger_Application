@@ -195,6 +195,7 @@ public class Main {
     //Ledger displays all entries, so we read from the csv file using buffered reader
     public static void displayAllEntries(){
         List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        System.out.println("Here is all the transaction for your account: ");
         for (int i = 0; i < transactionList.size(); i++){
             Transaction consoleDisplayAllEntries = transactionList.get(i);
             System.out.println(consoleDisplayAllEntries.displayTransactionFormat());
