@@ -236,6 +236,21 @@ public class Main {
         }
     }
 
+    //Previous month filter
+    public static void previousMonthEntries() {
+        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        for (int i = 0; i < transactionList.size(); i++) {
+            if (transactionList.get(i).getDate().getMonth() == LocalDate.now().getMonth().minus(1) && transactionList.get(i).getDate().getYear() == LocalDate.now().getYear()){
+                System.out.println(transactionList.get(i).displayTransactionFormat());
+            }
+        }
+    }
+
+    //year to date filter
+    public static void yearToDateOnlyEntries(){
+        
+    }
+
     //Custom search by vendor name
     //Use .equals or if a line contains this user input print it out
     public static void searchByVendor(Scanner scanner){
