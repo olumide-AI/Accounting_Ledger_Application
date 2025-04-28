@@ -256,7 +256,16 @@ public class Main {
         }
 
     }
-    
+
+    //Filter for Previous year
+    public static void  previousYearEntries(){
+        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        for (Transaction transaction : transactionList){
+            if (transaction.getDate().getYear() == LocalDate.now().getYear()-1){
+                System.out.println(transaction.displayTransactionFormat());
+            }
+        }
+    }
 
     //Custom search by vendor name
     //Use .equals or if a line contains this user input print it out
