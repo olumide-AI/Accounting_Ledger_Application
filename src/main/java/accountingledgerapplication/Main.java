@@ -25,10 +25,11 @@ public class Main {
             String userInputHomeScreen = scanner.nextLine().toUpperCase().trim();
             switch (userInputHomeScreen) {
                 case "D":
-                    ;//Add deposit method
+                    Transaction transaction = addDepositInformation( scanner);
+                    writeTransactionsToFile(transaction);
                     break;
                 case "P":
-                    ;//Make payment method
+                    addDebitPaymentInformation( scanner);
                     break;
                 case "L":
                     ;//Display ledger
@@ -44,22 +45,7 @@ public class Main {
     }
 
     public static void ledgerHomeScreen(Scanner scanner) {
-        /*
-                    A) All - Display all entries
-            o D) Deposits - Display only the entries that are deposits into the
-            account
-            o P) Payments - Display only the negative entries (or payments)
-            o R) Reports - A new screen that allows the user to run pre-defined
-            reports or to run a custom search
-            § 1) Month To Date
-            § 2) Previous Month
-            § 3) Year To Date
-            § 4) Previous Year
-            § 5) Search by Vendor - prompt the user for the vendor name
-            and display all entries for that vendor
-            § 0) Back - go back to the report page
-            o H) Home - go back to the home page
-         */
+
         while (true) {
             System.out.println("Display all entries");
             System.out.println("Please select the following options");
@@ -98,8 +84,8 @@ public class Main {
         while (true) {
             System.out.println("Run your custom search on your report");
             System.out.println("Please select the following options");
-            System.out.println("1 - Display Month to Date information");
-            System.out.println("2 - Display previous month information");
+            System.out.println("1 - Display Month to Date information"); //yyyy-mm-dd
+            System.out.println("2 - Display previous month information"); //
             System.out.println("3 - Display year to date information");
             System.out.println("4 - Display previous year information");
             System.out.println("5 - To search by vendor");
@@ -150,11 +136,11 @@ public class Main {
 
 
     //Write the user deposit information to file
-    public static void writeTransactionsToFile(List<Transaction> transactionEntry) {
+    public static void writeTransactionsToFile(Transaction transactionEntry) {
         try (FileWriter fileWriter = new FileWriter("transactionFolder/transaction.csv", true)) {
-            for (int i = 0; i < transactionEntry.size(); i++) {
-                fileWriter.write(transactionEntry.get(i).displayTransactionFormat() + "\n");
-            }
+
+                fileWriter.write(transactionEntry.displayTransactionFormat() + "\n");
+
         } catch (IOException e) {
             System.out.println("Oh no: " + e.getMessage());
         }
