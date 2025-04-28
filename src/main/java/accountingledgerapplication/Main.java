@@ -134,7 +134,7 @@ public class Main {
     //Add Deposit method
     //use scanner to retrieve info. What info Just deposit? is deposit information just transaction info
     //if so i just create new transaction
-    public static Transaction addDepositInformation() {
+    public static Transaction addDepositInformation(Scanner scanner) {
         System.out.println("What date is your transaction: ");
         String date = scanner.nextLine();
         System.out.println("What time was your transaction: ");
@@ -143,11 +143,11 @@ public class Main {
         String description = scanner.nextLine();
         System.out.println("What is your transaction vendor name: ");
         String vendor = scanner.nextLine();
-        System.out.println("What was the amount: ");
+        System.out.println("What was the Deposit amount: ");
         double amount = Double.parseDouble(scanner.nextLine());
         return new Transaction(date, time, description, vendor, amount);
     }
-    //make a method for debit transaction (-) while returning
+
 
     //Write the user deposit information to file
     public static void writeTransactionsToFile(List<Transaction> transactionEntry) {
@@ -162,7 +162,7 @@ public class Main {
 
     //Debit payment information (will include "-" price)
     //We can call the writeTransactionsToFile() method to write it into our csv file
-    public static Transaction addDebitPaymentInformation() {
+    public static Transaction addDebitPaymentInformation(Scanner scanner) {
         System.out.println("What date is your transaction: ");
         String date = scanner.nextLine();
         System.out.println("What time was your transaction: ");
@@ -198,9 +198,8 @@ public class Main {
     public static void displayAllEntries(){
         List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
         System.out.println("Here is all the transaction for your account: ");
-        for (int i = 0; i < transactionList.size(); i++){
-            Transaction consoleDisplayAllEntries = transactionList.get(i);
-            System.out.println(consoleDisplayAllEntries.displayTransactionFormat());
+        for (Transaction transaction : transactionList) {
+            System.out.println(transaction.displayTransactionFormat());
         }
     }
 
@@ -237,6 +236,7 @@ public class Main {
     }
 
     //Previous month filter
+    //Edge case if jan 2025 - dec 2024 
     public static void previousMonthEntries() {
         List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
         for (int i = 0; i < transactionList.size(); i++) {
@@ -248,7 +248,7 @@ public class Main {
 
     //year to date filter
     public static void yearToDateOnlyEntries(){
-        
+
     }
 
     //Custom search by vendor name
