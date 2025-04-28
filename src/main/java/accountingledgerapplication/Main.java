@@ -213,7 +213,6 @@ public class Main {
         }
     }
 
-
     //Display only debits entries
     public static void displayDebitPaymentEntries(){
         List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
@@ -224,4 +223,21 @@ public class Main {
             }
         }
     }
+
+    //Custom search to filter from month to date
+
+    //Custom search by vendor name
+    //Use .equals or if a line contains this user input print it out
+    public static void searchByVendor(Scanner scanner){
+        String userVendorName = scanner.nextLine();
+        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        System.out.println("Here is all the transaction entries for" + userVendorName + " : ");
+        for (int i = 0; i < transactionList.size(); i++){
+            if (transactionList.get(i).getVendor().contains(userVendorName)){
+                System.out.println(transactionList.get(i).displayTransactionFormat());
+            }
+        }
+
+    }
+
 }
