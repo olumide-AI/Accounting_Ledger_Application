@@ -146,6 +146,7 @@ public class Main {
         double amount = Double.parseDouble(scanner.nextLine());
         return new Transaction(date, time, description, vendor, amount);
     }
+    //make a method for debit transaction (-) while returning
 
     //Write the user deposit information to file
     public static void writeTransactionsToFile(List<Transaction> transactionEntry) {
@@ -171,7 +172,7 @@ public class Main {
         String vendor = scanner.nextLine();
         System.out.println("What was the amount (with a negative for debit ): ");
         double amount = Double.parseDouble(scanner.nextLine());
-        return new Transaction(date, time, description, vendor, amount);
+        return new Transaction(date, time, description, vendor, -amount); //John helped with design choice
     }
 
     //Read transaction from transaction file
