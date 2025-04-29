@@ -143,13 +143,13 @@ public class Main {
         return new Transaction(date, time, description, vendor, amount);
     }
 
-
+    //Delete this
     //Write the user deposit information to file
     public static void writeTransactionsToFile(Transaction transactionEntry) {
         try (FileWriter fileWriter = new FileWriter(FILE_PATH, true)) {
             fileWriter.write(transactionEntry.displayTransactionFormat() + "\n");
         } catch (IOException e) {
-            System.out.println("Oh no: " + e.getMessage());
+            System.out.println("File writing transaction error: " + e.getMessage());
         }
     }
 
@@ -182,7 +182,7 @@ public class Main {
             }
         }
         catch (IOException e){
-            System.out.println("Problem: " + e.getMessage());
+            System.out.println("File Reading transaction error:  " + e.getMessage());
         }
         return transactionList;
     }
