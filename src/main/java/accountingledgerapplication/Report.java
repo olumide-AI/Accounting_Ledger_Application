@@ -29,6 +29,7 @@ public class Report {
         //Case to handle if we're in January 2025 and previous year is december 2024
         int previousMonth;
         int yearOfPreviousMonth;
+        //int lastMonth = todayDate.minusMonths(1).getMonthValue();
         //If we're in the first month of the year
         if (todayDate.getMonthValue() == 1){
             //we can just set our previous month to decemeber which is 12
