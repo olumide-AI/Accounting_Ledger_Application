@@ -67,9 +67,4 @@ public class Transaction {
         return getDate() + "|" + getTime() + "|" + getDescription() + "|" + getVendor() + "|" + getAmount();
     }
 
-    //User Display
-
-
-
-
 }

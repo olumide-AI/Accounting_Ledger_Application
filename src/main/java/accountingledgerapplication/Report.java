@@ -32,14 +32,14 @@ public class Report {
         //int lastMonth = todayDate.minusMonths(1).getMonthValue();
         //If we're in the first month of the year
         if (todayDate.getMonthValue() == 1){
-            //we can just set our previous month to decemeber which is 12
+            //we can just set our previous month to Dec which is 12
             previousMonth = 12;
             //then the year of december will be 2024, last year
             yearOfPreviousMonth = todayDate.getYear() -1; //will give us 2024 in our example
         }
         else {
             //If it's not january of a new year, previous month is just
-            //todays month minus 1
+            //today's month minus 1
             previousMonth = todayDate.getMonthValue() -1;
             yearOfPreviousMonth = todayDate.getYear();
         }
