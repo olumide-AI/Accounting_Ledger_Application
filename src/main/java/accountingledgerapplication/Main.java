@@ -73,7 +73,7 @@ public class Main {
                     displayDebitPaymentEntries();
                     break;
                 case "R":
-                    reportHomeScreen( scanner);
+                    reportHomeScreen(scanner);
                     break;
                 case "H":
                     flag = false;
@@ -88,7 +88,8 @@ public class Main {
 
     //Reports Screen
     public static void reportHomeScreen(Scanner scanner) {
-        while (true) {
+        boolean flag = true;
+        while (flag) {
             System.out.println("Run your custom search on your report");
             System.out.println("Please select the following options");
             System.out.println("1 - Display Month to Date information"); //yyyy-mm-dd
@@ -97,26 +98,27 @@ public class Main {
             System.out.println("4 - Display previous year information");
             System.out.println("5 - To search by vendor");
             System.out.println("0 - Go back to the Ledger screen"); //The book says report
-            int userInputReport = scanner.nextInt();
-            scanner.nextLine();
+            String userInputReport = scanner.nextLine();
+
             switch (userInputReport) {
-                case 1:
-                    ;//Month to date report
+                case "1":
+                    monthToDateOnlyEntries();
                     break;
-                case 2:
-                    ;//previous month report
+                case "2":
+                    previousMonthEntries();
                     break;
-                case 3:
-                    ;//year to date report
+                case "3":
+                    yearToDateOnlyEntries();
                     break;
-                case 4:
-                    ;//previous year report
+                case "4":
+                    previousYearEntries();
                     break;
-                case 5:
-                    ;//Vendor specific report
+                case "5":
+                    searchByVendor(scanner);
                     break;
-                case 0:
-                    ;//Go back to report or ledger page?
+                case "0":
+                    flag = false;
+                    break;
                 default:
                     System.out.println("Please enter option - 1,2,3,4,5, or 0");
             }
@@ -169,7 +171,7 @@ public class Main {
 
     //Read transaction from transaction file
     public static List<Transaction> readAllEntries(String filename){
-        //initalize empty list to store transations
+        //initialize empty list to store transactions
         List<Transaction> transactionList = new ArrayList<>();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))){
             String line;
@@ -219,9 +221,9 @@ public class Main {
     //Custom search to filter from month to date
     public static void monthToDateOnlyEntries(){
         List<Transaction> transactionList = readAllEntries(FILE_PATH);
-        for (int i = 0; i < transactionList.size(); i++){
-            if (transactionList.get(i).getDate().getMonth() == LocalDate.now().getMonth() && transactionList.get(i).getDate().getYear() == LocalDate.now().getYear()){
-                System.out.println(transactionList.get(i).displayTransactionFormat());
+        for (Transaction transaction : transactionList) {
+            if (transaction.getDate().getMonth() == LocalDate.now().getMonth() && transaction.getDate().getYear() == LocalDate.now().getYear()) {
+                System.out.println(transaction.displayTransactionFormat());
             }
         }
     }
@@ -261,11 +263,12 @@ public class Main {
     //Custom search by vendor name
     //Use .equals or if a line contains this user input print it out
     public static void searchByVendor(Scanner scanner){
+        System.out.println("What is the vendor name ");
         String userVendorName = scanner.nextLine();
         List<Transaction> transactionList = readAllEntries(FILE_PATH);
         System.out.println("Here is all the transaction entries for" + userVendorName + " : ");
         for (int i = 0; i < transactionList.size(); i++){
-            if (transactionList.get(i).getVendor().contains(userVendorName)){
+            if (transactionList.get(i).getVendor().toLowerCase().contains(userVendorName)){
                 System.out.println(transactionList.get(i).displayTransactionFormat());
             }
         }
