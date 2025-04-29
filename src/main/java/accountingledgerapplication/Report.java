@@ -45,4 +45,17 @@ public class Report {
         }
 
     }
+
+    //Filter for Previous year
+    public static void  previousYearEntries(){
+        List<Transaction> transactionList = FileHandler.readAllTransactions();
+        //Because date is an integer
+        int previousYear = LocalDate.now().getYear() -1;
+        System.out.println("Transactions for the last year: ");
+        for (Transaction transaction : transactionList){
+            if (transaction.getDate().getYear() == previousYear){
+                System.out.println(transaction.displayTransactionFormat());
+            }
+        }
+    }
 }
