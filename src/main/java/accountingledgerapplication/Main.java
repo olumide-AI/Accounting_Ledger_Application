@@ -130,34 +130,15 @@ public class Main {
     //use scanner to retrieve info. What info Just deposit? is deposit information just transaction info
     //if so i just create new transaction
     public static Transaction addDepositInformation() {
-        System.out.println("What date is your transaction: ");
-        String date = scanner.nextLine();
-        System.out.println("What time was your transaction: ");
-        String time = scanner.nextLine();
-        System.out.println("What is your transaction description: ");
-        String description = scanner.nextLine();
-        System.out.println("What is your transaction vendor name: ");
-        String vendor = scanner.nextLine();
-        System.out.println("What was the Deposit amount: ");
-        double amount = Double.parseDouble(scanner.nextLine());
-        return new Transaction(date, time, description, vendor, amount);
+
+        return addTransactionDetails(true);
     }
 
 
     //Debit payment information (will include "-" price)
     //We can call the writeTransactionsToFile() method to write it into our csv file
     public static Transaction addDebitPaymentInformation() {
-        System.out.println("What date is your transaction: ");
-        String date = scanner.nextLine();
-        System.out.println("What time was your transaction: ");
-        String time = scanner.nextLine();
-        System.out.println("What is your transaction description: ");
-        String description = scanner.nextLine();
-        System.out.println("What is your transaction vendor name: ");
-        String vendor = scanner.nextLine();
-        System.out.println("What was the amount : ");
-        double amount = Double.parseDouble(scanner.nextLine());
-        return new Transaction(date, time, description, vendor, -1 * amount);
+        return addTransactionDetails(false);
     }
 
     //Error handling, Input validation
@@ -170,7 +151,7 @@ public class Main {
                 LocalDate.parse(transactionDate);
                 break;
             } catch (DateTimeParseException e) {
-                System.out.println("Invalid date format. Please use yyyy-mm-dd" + e.getMessage());
+                System.out.println("Invalid date format. Please use yyyy-mm-dd");
             }
         }
         System.out.println("Enter transaction time  (HH:MM): ");
@@ -178,7 +159,44 @@ public class Main {
 
         String transactionDescription;
         while (true){
-            
+            System.out.println("Enter transaction description: ");
+            transactionDescription = scanner.nextLine().trim();
+            //transaction description is not empty
+            if(!transactionDescription.isEmpty())
+            {
+                break;
+            }
+            System.out.println("Description can't be empty.");
         }
+        String transactionVendor;
+        while(true){
+            System.out.println("Enter transaction vendor: ");
+            transactionVendor = scanner.nextLine().trim().toLowerCase();
+            if(!transactionVendor.isEmpty()){
+                break;
+            }
+            System.out.println("Please provide a vendor name");
+        }
+        double transactionAmount;
+        while(true){
+            System.out.println("Enter transaction amount: ");
+            try{
+                transactionAmount = Double.parseDouble(scanner.nextLine().trim());
+                if(transactionAmount <=0){
+                    System.out.println("Transaction amount has to be a positive number ");
+                }
+                else {
+                    break;
+                }
+            }
+            catch (NumberFormatException e){
+                System.out.println("Amount must be a number, please enter a correct number");
+            }
+        }
+        if (!isDeposit){
+            transactionAmount = -1 * transactionAmount;
+        }
+        System.out.println("Transaction has been added to your transaction file");
+        return  new Transaction(transactionDate, transactionTime, transactionDescription, transactionVendor,transactionAmount);
     }
 }
