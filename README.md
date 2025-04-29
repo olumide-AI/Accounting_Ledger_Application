@@ -24,5 +24,24 @@ Previous Year, and vendor name)
 - **L** for Viewing ledger menu
 - **E** to exit the application
 
-Here is a image of my Home Screen:
+*Here is a image of my Home Screen:*
+
+### Ledger Screen
+- **A** to display all transactions
+- **D** to display deposit only transactions
+- **P** to display debit payment only transactions
+- **R** to view the report menu
+- **R** to return to the home screen
+
+*Here is a image of my ledger screen:*
+
+### Report Screen
+- **A** to display Month-to-Date transactions
+- **D** to display previous month transactions
+- **P** to display Year-to-Date transactions
+- **R** to display previous year transactions
+- **R** to search by vendor name
+- **R** to return to the ledger screen
+
+*Here is a image of my ledger screen:*
 
