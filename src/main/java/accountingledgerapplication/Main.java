@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -159,5 +160,25 @@ public class Main {
         return new Transaction(date, time, description, vendor, -1 * amount);
     }
 
+    //Error handling, Input validation
+    public static Transaction addTransactionDetails(boolean isDeposit) {
+        String transactionDate;
+        while (true) {
+            System.out.println("Enter transaction date (YYYY-MM-DD): ");
+            transactionDate = scanner.nextLine().trim();
+            try {
+                LocalDate.parse(transactionDate);
+                break;
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date format. Please use yyyy-mm-dd" + e.getMessage());
+            }
+        }
+        System.out.println("Enter transaction time  (HH:MM): ");
+        String transactionTime = scanner.nextLine().trim();
 
+        String transactionDescription;
+        while (true){
+            
+        }
+    }
 }
