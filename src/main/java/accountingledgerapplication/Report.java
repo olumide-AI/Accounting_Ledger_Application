@@ -19,5 +19,15 @@ public class Report {
         }
     }
 
-    
+    //Previous month filter
+    //Edge case if jan 2025 - dec 2024
+    public static void displayPreviousMonthEntries() {
+        List<Transaction> transactionList = FileHandler.readAllTransactions();
+        LocalDate todayDate = LocalDate.now();
+        for (Transaction transaction : transactionList) {
+            if (transaction.getDate().getMonth() == todayDate.getMonth().minus(1) && transaction.getDate().getYear() == todayDate.getYear()) {
+                System.out.println(transaction.displayTransactionFormat());
+            }
+        }
+    }
 }
