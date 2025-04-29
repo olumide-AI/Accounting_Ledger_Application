@@ -31,17 +31,51 @@ Previous Year, and vendor name)
 - **D** to display deposit only transactions
 - **P** to display debit payment only transactions
 - **R** to view the report menu
-- **R** to return to the home screen
+- **H** to return to the home screen
 
 *Here is a image of my ledger screen:*
 
 ### Report Screen
-- **A** to display Month-to-Date transactions
-- **D** to display previous month transactions
-- **P** to display Year-to-Date transactions
-- **R** to display previous year transactions
-- **R** to search by vendor name
-- **R** to return to the ledger screen
+- **1** to display Month-to-Date transactions
+- **2** to display previous month transactions
+- **3** to display Year-to-Date transactions
+- **4** to display previous year transactions
+- **5** to search by vendor name
+- **0** to return to the ledger screen
 
 *Here is a image of my ledger screen:*
+
+## Project Structure
+- **Main.java:** Runs and tie in all applications together while managing user interface.
+- **Ledger.java:** Displays transaction types (All, Deposits and Debit payments).
+- **Report.java:** Allows for customized report generation based on the pre-defined options.
+- **Transaction.java:** Class where i manage all my fields, constructor, getters, setters and display format.
+- **FileHandler.java:** Manages the reading and writing to the transactions.csv file.
+
+## Interesting piece of Code:
+Handling the "Previous Month" method was interesting testing for edge cases where
+the current month is January. The previous month will be december of the previous year.
+This issue only occurs once but if it's not handle could cause bad data since the 
+month becomes 0 which doesn't exit in a calendar. 
+
+So the code checks:
+- If the current month is January, the previous month must be December (12).
+- And since we’re now reaching back into the previous year, the year must be reduced by 1 as well.
+
+**Paste interesting piece of code here**
+
+## How to run and test the program
+- Clone this repo.
+- Make sure you have a jvm installed on your computer. 
+- Compile java files.
+- Create the **transactionFolder** in a reasonable path and create a **transaction.csv**
+to store data.
+- Run the main.java
+- You can start playing with application of your CLI 
+
+## Upcoming changes
+- On the reports screen add another option for a custom search.
+
+## Author
+Olumide Kolawole (Year-Up, App dev)
 
