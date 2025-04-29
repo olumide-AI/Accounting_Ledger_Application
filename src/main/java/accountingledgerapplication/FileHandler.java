@@ -21,11 +21,11 @@ public class FileHandler {
     }
 
     //Read transaction from transaction file
-    public static List<Transaction> readAllTransactions(String filename){
+    public static List<Transaction> readAllTransactions(){
         //Create an empty list that will eventually store all transaction
         //read from the file
         List<Transaction> transactionList = new ArrayList<>();
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_PATH))){
             //Variable that holds each line has we read from file
             String line;
             while((line = bufferedReader.readLine()) != null){
