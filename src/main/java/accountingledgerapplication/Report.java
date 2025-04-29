@@ -2,6 +2,7 @@ package accountingledgerapplication;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Scanner;
 
 public class Report {
 
@@ -57,5 +58,20 @@ public class Report {
                 System.out.println(transaction.displayTransactionFormat());
             }
         }
+    }
+
+    //Custom search by vendor name
+    //Use .equals or if a line contains this user input print it out
+    public static void searchByVendor(Scanner scanner){
+        System.out.println("What is the vendor name to search: ");
+        String userVendorName = scanner.nextLine().toLowerCase();
+        List<Transaction> transactionList = FileHandler.readAllTransactions();
+        System.out.println("Here is all the transaction entries for" + userVendorName + " : ");
+        for (Transaction transaction : transactionList) {
+            if (transaction.getVendor().toLowerCase().contains(userVendorName)) {
+                System.out.println(transaction.displayTransactionFormat());
+            }
+        }
+
     }
 }
