@@ -26,9 +26,25 @@ public class Report {
     public static void displayPreviousMonthEntries() {
         List<Transaction> transactionList = FileHandler.readAllTransactions();
         LocalDate todayDate = LocalDate.now();
+        //Case to handle if we're in January 2025 and previous year is december 2024
+        int previousMonth;
+        int yearOfPreviousMonth;
+        //If we're in the first month of the year
+        if (todayDate.getMonthValue() == 1){
+            //we can just set our previous month to decemeber which is 12
+            previousMonth = 12;
+            //then the year of december will be 2024, last year
+            yearOfPreviousMonth = todayDate.getYear() -1; //will give us 2024 in our example
+        }
+        else {
+            //If it's not january of a new year, previous month is just
+            //todays month minus 1
+            previousMonth = todayDate.getMonthValue() -1;
+            yearOfPreviousMonth = todayDate.getYear();
+        }
         System.out.println("Transactions for previous month: ");
         for (Transaction transaction : transactionList) {
-            if (transaction.getDate().getMonth() == todayDate.getMonth().minus(1) && transaction.getDate().getYear() == todayDate.getYear()) {
+            if (transaction.getDate().getYear() == yearOfPreviousMonth && transaction.getDate().getMonthValue() == previousMonth) {
                 System.out.println(transaction.displayTransactionFormat());
             }
         }
