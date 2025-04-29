@@ -17,7 +17,8 @@ public class Main {
 
 
         //Create a main Home screen
-        while (true) {
+        boolean flag = true;
+        while (flag) {
             System.out.println("Welcome to the Home screen");
             System.out.println("Please select the following options");
             System.out.println("D - Add deposit information");
@@ -35,12 +36,14 @@ public class Main {
                     writeTransactionsToFile(transaction1);
                     break;
                 case "L":
-                    ;//Display ledger
+                    ledgerHomeScreen( scanner);
                     break;
                 case "E":
                     System.out.println("Thank you, goodbye");
                     ;//Exit
+                    flag = false;
                     break;
+
                 default:
                     System.out.println("Please enter option D,P,L or X");
             }
@@ -48,8 +51,9 @@ public class Main {
     }
 
     public static void ledgerHomeScreen(Scanner scanner) {
+        boolean flag = true;
 
-        while (true) {
+        while (flag) {
             System.out.println("Display all entries");
             System.out.println("Please select the following options");
             System.out.println("A - Display all entries");
@@ -60,19 +64,19 @@ public class Main {
             String userInputLedger = scanner.nextLine().toUpperCase().trim();
             switch (userInputLedger) {
                 case "A":
-                    ;//Include all entries display
+                    displayAllEntries();
                     break;
                 case "D":
-                    ;//Display entries deposited into the account
+                    displayDepositEntries();
                     break;
                 case "P":
-                    ;//Display payments(negative entries)
+                    displayDebitPaymentEntries();
                     break;
                 case "R":
-                    ;//New Screen Method
+                    reportHomeScreen( scanner);
                     break;
                 case "H":
-                    ;//Go back to the home page
+                    flag = false;
                     break;
                 default:
                     System.out.println("Please enter option - A,D,P,R,or H");
@@ -158,9 +162,9 @@ public class Main {
         String description = scanner.nextLine();
         System.out.println("What is your transaction vendor name: ");
         String vendor = scanner.nextLine();
-        System.out.println("What was the amount (with a negative for debit ): ");
+        System.out.println("What was the amount : ");
         double amount = Double.parseDouble(scanner.nextLine());
-        return new Transaction(date, time, description, vendor, -amount); //John helped with design choice
+        return new Transaction(date, time, description, vendor, -1 * amount);
     }
 
     //Read transaction from transaction file
