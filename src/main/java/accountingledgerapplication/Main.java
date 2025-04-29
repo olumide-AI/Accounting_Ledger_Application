@@ -11,8 +11,10 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
+    static final String FILE_PATH = "transactionFolder/transaction.csv";
 
     public static void main(String[] args) {
+
 
         //Create a main Home screen
         while (true) {
@@ -29,7 +31,8 @@ public class Main {
                     writeTransactionsToFile(transaction);
                     break;
                 case "P":
-                    addDebitPaymentInformation( scanner);
+                    Transaction transaction1 = addDebitPaymentInformation( scanner);
+                    writeTransactionsToFile(transaction1);
                     break;
                 case "L":
                     ;//Display ledger
@@ -137,10 +140,8 @@ public class Main {
 
     //Write the user deposit information to file
     public static void writeTransactionsToFile(Transaction transactionEntry) {
-        try (FileWriter fileWriter = new FileWriter("transactionFolder/transaction.csv", true)) {
-
-                fileWriter.write(transactionEntry.displayTransactionFormat() + "\n");
-
+        try (FileWriter fileWriter = new FileWriter(FILE_PATH, true)) {
+            fileWriter.write(transactionEntry.displayTransactionFormat() + "\n");
         } catch (IOException e) {
             System.out.println("Oh no: " + e.getMessage());
         }
@@ -182,7 +183,7 @@ public class Main {
 
     //Ledger displays all entries, so we read from the csv file using buffered reader method
     public static void displayAllEntries(){
-        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        List<Transaction> transactionList = readAllEntries(FILE_PATH);
         System.out.println("Here is all the transaction for your account: ");
         for (Transaction transaction : transactionList) {
             System.out.println(transaction.displayTransactionFormat());
@@ -191,7 +192,7 @@ public class Main {
 
     //Method that display only deposit transaction to console
     public static void displayDepositEntries(){
-        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        List<Transaction> transactionList = readAllEntries(FILE_PATH);
         System.out.println("Here is all the Deposit transaction entries for your account: ");
         for (int i = 0; i < transactionList.size(); i++){
             if (transactionList.get(i).getAmount() > 0){
@@ -202,7 +203,7 @@ public class Main {
 
     //Display only debits entries
     public static void displayDebitPaymentEntries(){
-        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        List<Transaction> transactionList = readAllEntries(FILE_PATH);
         System.out.println("Here is all the Debit transaction entries for your account: ");
         for (int i = 0; i < transactionList.size(); i++){
             if (transactionList.get(i).getAmount() < 0){
@@ -213,7 +214,7 @@ public class Main {
 
     //Custom search to filter from month to date
     public static void monthToDateOnlyEntries(){
-        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        List<Transaction> transactionList = readAllEntries(FILE_PATH);
         for (int i = 0; i < transactionList.size(); i++){
             if (transactionList.get(i).getDate().getMonth() == LocalDate.now().getMonth() && transactionList.get(i).getDate().getYear() == LocalDate.now().getYear()){
                 System.out.println(transactionList.get(i).displayTransactionFormat());
@@ -224,7 +225,7 @@ public class Main {
     //Previous month filter
     //Edge case if jan 2025 - dec 2024
     public static void previousMonthEntries() {
-        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        List<Transaction> transactionList = readAllEntries(FILE_PATH);
         for (int i = 0; i < transactionList.size(); i++) {
             if (transactionList.get(i).getDate().getMonth() == LocalDate.now().getMonth().minus(1) && transactionList.get(i).getDate().getYear() == LocalDate.now().getYear()){
                 System.out.println(transactionList.get(i).displayTransactionFormat());
@@ -234,7 +235,7 @@ public class Main {
 
     //year to date filter
     public static void yearToDateOnlyEntries(){
-        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        List<Transaction> transactionList = readAllEntries(FILE_PATH);
         for (Transaction transaction : transactionList){
             if (transaction.getDate().getYear() == LocalDate.now().getYear()){
                 System.out.println(transaction.displayTransactionFormat());
@@ -245,7 +246,7 @@ public class Main {
 
     //Filter for Previous year
     public static void  previousYearEntries(){
-        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        List<Transaction> transactionList = readAllEntries(FILE_PATH);
         for (Transaction transaction : transactionList){
             if (transaction.getDate().getYear() == LocalDate.now().getYear()-1){
                 System.out.println(transaction.displayTransactionFormat());
@@ -257,7 +258,7 @@ public class Main {
     //Use .equals or if a line contains this user input print it out
     public static void searchByVendor(Scanner scanner){
         String userVendorName = scanner.nextLine();
-        List<Transaction> transactionList = readAllEntries("transactionFolder/transaction.csv");
+        List<Transaction> transactionList = readAllEntries(FILE_PATH);
         System.out.println("Here is all the transaction entries for" + userVendorName + " : ");
         for (int i = 0; i < transactionList.size(); i++){
             if (transactionList.get(i).getVendor().contains(userVendorName)){
