@@ -12,6 +12,8 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
     static final String FILE_PATH = "transactionFolder/transaction.csv";
+    //FileHandler.writeTransactionsToFile(transaction);
+    //FileHandler.readAllTransactions();
 
     public static void main(String[] args) {
 
@@ -168,7 +170,7 @@ public class Main {
         double amount = Double.parseDouble(scanner.nextLine());
         return new Transaction(date, time, description, vendor, -1 * amount);
     }
-
+    //Delete this
     //Read transaction from transaction file
     public static List<Transaction> readAllEntries(String filename){
         //initialize empty list to store transactions
