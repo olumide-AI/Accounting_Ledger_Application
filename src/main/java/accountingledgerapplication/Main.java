@@ -117,6 +117,9 @@ public class Main {
                 case "5":
                     Report.searchByVendor(scanner);
                     break;
+                case "6":
+                    Report.customSearch(scanner);
+                    break;
                 case "0":
                     flag = false;
                     break;
