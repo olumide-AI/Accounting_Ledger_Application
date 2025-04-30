@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class FileHandler {
@@ -33,12 +34,36 @@ public class FileHandler {
                 //Create a new transaction object with pieces from the line by
                 //splitting them by the pipes
                 Transaction transaction = new Transaction(splitPerEntries[0], splitPerEntries[1], splitPerEntries[2], splitPerEntries[3], Double.parseDouble(splitPerEntries[4]));
+
                 //Add this new Transaction to the transactionsList we are building
                 transactionList.add(transaction);
             }
         }
         catch (IOException e){
             System.out.println("File Reading transaction error:  " + e.getMessage());
+        }
+        //Sort by most recent entries first
+        //Collections.reverse(transactionList);
+
+        //Or sort by date first from newst to odest
+        for (int i =0; i< transactionList.size() -1; i++){
+            for (int j = i+1; j < transactionList.size(); j++){
+                Transaction firstTransation = transactionList.get(i);
+                Transaction secondTransaction = transactionList.get(j);
+
+                boolean flag = false;
+                if (firstTransation.getDate().isBefore(secondTransaction.getDate())){
+                    flag = true;
+                } else if (firstTransation.getDate().isEqual(secondTransaction.getDate())) {
+                    if (firstTransation.getTime().isBefore(secondTransaction.getTime())){
+                        flag = true;
+                    }
+                }
+                if (flag){
+                    transactionList.set(i,secondTransaction);
+                    transactionList.set(j, firstTransation);
+                }
+            }
         }
         //Return the fill list of transactions we've built
         return transactionList;

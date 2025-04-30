@@ -91,4 +91,6 @@ public class Report {
         }
 
     }
+    // Method for custom search
+    //Do i create a custom search method
 }
