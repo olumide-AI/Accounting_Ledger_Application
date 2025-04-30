@@ -89,8 +89,38 @@ public class Report {
                 System.out.println(transaction.displayTransactionFormat());
             }
         }
-
     }
     // Method for custom search
     //Do i create a custom search method
+    public static void customSearch(Scanner scanner){
+        System.out.println("Custom Search: ");
+        System.out.println("By Start Date (YYYY-MM-DD): ");
+        String userStartDate = scanner.nextLine().trim();
+
+        System.out.println("By End Date (YYYY-MM-DD): ");
+        String userEndDate = scanner.nextLine().trim();
+
+        System.out.println("By Description: ");
+        String userDescription = scanner.nextLine().trim();
+
+        System.out.println("By Vendor Name: ");
+        String userVendor = scanner.nextLine().trim();
+
+        System.out.println("By Transaction amount: ");
+        String userAmount = scanner.nextLine().trim();
+
+        //Load all transaction from csv file into a list
+        List<Transaction> transactionList = FileHandler.readAllTransactions();
+
+        System.out.println("Custom Search Results: ");
+        //Search through all transactions one by one
+        for (Transaction singleTransaction: transactionList){
+            
+        }
+
+
+
+
+
+    }
 }
