@@ -1,6 +1,7 @@
 package accountingledgerapplication;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -114,8 +115,29 @@ public class Report {
 
         System.out.println("Custom Search Results: ");
         //Search through all transactions one by one
-        for (Transaction singleTransaction: transactionList){
-            
+        for (Transaction currentTransaction: transactionList){
+            //We only want to print when transaction if it passes all filters
+            //
+            boolean flag = true;
+
+            //Start Date 
+            //Check if user type a start date, if not don't execute
+            if (!userStartDate.isEmpty()){
+                try{
+                    //Convert string from string to localdate for comparison
+                    LocalDate startDate = LocalDate.parse(userStartDate);
+                    //If transactoin is older thsn the start date, don't add to our list
+                    if (currentTransaction.getDate().isBefore(startDate)){
+                        flag = false;
+                }
+
+                }
+                catch (DateTimeParseException e){
+                    System.out.println("Wrong start date format. ");
+                }
+            }
+
+
         }
 
 
