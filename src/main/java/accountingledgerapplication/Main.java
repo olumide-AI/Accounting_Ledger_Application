@@ -1,13 +1,7 @@
 package accountingledgerapplication;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -203,4 +197,5 @@ public class Main {
         System.out.println("Transaction has been added to your transaction file");
         return  new Transaction(transactionDate, transactionTime, transactionDescription, transactionVendor,transactionAmount);
     }
+
 }

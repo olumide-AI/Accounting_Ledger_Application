@@ -186,14 +186,6 @@ public class Report {
             if (flag){
                 System.out.println(currentTransaction.displayTransactionFormat());
             }
-
-
-
         }
-
-
-
-
-
     }
 }
