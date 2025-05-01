@@ -10,9 +10,7 @@ import java.util.List;
 
 public class FileHandler {
     private static final String FILE_PATH = "transactionFolder/transaction.csv";
-
-    //Write the transaction to the csv file (Copied same code from main
-    //Write the user deposit information to file
+    //Write the user deposit information to transaction.csv file
     public static void writeTransactionsToFile(Transaction transactionEntry) {
         try (FileWriter fileWriter = new FileWriter(FILE_PATH, true)) {
             fileWriter.write(transactionEntry.displayTransactionFormat() + "\n");
@@ -45,7 +43,7 @@ public class FileHandler {
         //Sort by most recent entries first
         //Collections.reverse(transactionList);
 
-        //Or sort by date first from newst to odest
+        //Or sort by date first from newest to oldest
         for (int i =0; i< transactionList.size() -1; i++){
             for (int j = i+1; j < transactionList.size(); j++){
                 Transaction firstTransation = transactionList.get(i);
