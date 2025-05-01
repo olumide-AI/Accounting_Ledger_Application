@@ -94,7 +94,7 @@ public class Report {
     // Method for custom search
     //Do i create a custom search method
     public static void customSearch(Scanner scanner){
-        System.out.println("Custom Search: ");
+        System.out.println("Custom Search: 'Leave blank space in scanner input not to use a custom field' ");
         System.out.println("By Start Date (YYYY-MM-DD): ");
         String userStartDate = scanner.nextLine().trim();
 
@@ -122,6 +122,7 @@ public class Report {
 
             //Start Date checks
             //Check if user type a start date, if not don't execute
+            //Also for the not (!) you can just use or statements instead of and - Logic gates
             if (!userStartDate.isEmpty()){
                 try{
                     //Convert string from string to localdate for comparison
