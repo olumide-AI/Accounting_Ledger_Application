@@ -40,9 +40,9 @@ public class Main {
                 default:
                     System.out.println("Please enter option D,P,L or E");
             }
-            //Closed my scanner at the end of main
-            scanner.close();
         }
+        //Closed my scanner at the end of main
+        scanner.close();
     }
 
     public static void ledgerHomeScreen() {
