@@ -182,6 +182,10 @@ public class Report {
                     System.out.println("Please enter a correct number amount. Filter isn't added to your custom search");
                 }
             }
+            //If flag comes out to be true
+            if (flag){
+                System.out.println(currentTransaction.displayTransactionFormat());
+            }
 
 
 

@@ -97,7 +97,7 @@ public class Main {
             System.out.println("3 - Display year to date information");
             System.out.println("4 - Display previous year information");
             System.out.println("5 - To search by vendor");
-            //System.out.println("6 - Custom Search");
+            System.out.println("6 - Customize transaction search");
             System.out.println("0 - Go back to the Ledger screen"); //The book says report
             String userInputReport = scanner.nextLine().trim();
 
