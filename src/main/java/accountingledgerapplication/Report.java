@@ -120,7 +120,7 @@ public class Report {
             //
             boolean flag = true;
 
-            //Start Date 
+            //Start Date
             //Check if user type a start date, if not don't execute
             if (!userStartDate.isEmpty()){
                 try{
@@ -133,9 +133,37 @@ public class Report {
 
                 }
                 catch (DateTimeParseException e){
-                    System.out.println("Wrong start date format. ");
+                    System.out.println("Wrong start date format. This filter won't be added to your custom filter");
                 }
             }
+
+            //End Date
+            //The if block will be skipped if user left it empty string
+            if (!userEndDate.isEmpty()){
+                try{
+                    LocalDate endDate = LocalDate.parse(userEndDate);
+                    //Is the transaction date later than the user end date
+                    //If it's greater it's false anf the code skips it
+                    if (currentTransaction.getDate().isAfter(endDate)){
+                        flag = false;
+                    }
+                }
+                catch (DateTimeParseException e){
+                    System.out.println("Wrong end date format. This filter won't be added to your custom filter. ");
+                }
+            }
+
+            //Start date and end date will create a window
+            //show mw transaction between january and July
+
+            //Description
+            //Is there description in this start and end date if any matches lets keep going with it
+            //Make sure we convert to lowercase to be safe
+            //Skio it all together if user leaves the scanner empty
+            if (!userDescription.isEmpty() && (!currentTransaction.getDescription().toLowerCase().contains(userDescription))){
+                flag = false;
+            }
+
 
 
         }
