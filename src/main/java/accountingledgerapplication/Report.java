@@ -120,7 +120,7 @@ public class Report {
             //
             boolean flag = true;
 
-            //Start Date
+            //Start Date checks
             //Check if user type a start date, if not don't execute
             if (!userStartDate.isEmpty()){
                 try{
@@ -137,7 +137,7 @@ public class Report {
                 }
             }
 
-            //End Date
+            //End Date checks
             //The if block will be skipped if user left it empty string
             if (!userEndDate.isEmpty()){
                 try{
@@ -156,11 +156,17 @@ public class Report {
             //Start date and end date will create a window
             //show mw transaction between january and July
 
-            //Description
+            //Description check
             //Is there description in this start and end date if any matches lets keep going with it
             //Make sure we convert to lowercase to be safe
-            //Skio it all together if user leaves the scanner empty
+            //Skip it all together if user leaves the scanner empty
+            //We can use .contains() or .isequals()
             if (!userDescription.isEmpty() && (!currentTransaction.getDescription().toLowerCase().contains(userDescription))){
+                flag = false;
+            }
+
+            //Vendor checks
+            if (!userVendor.isEmpty() && (!currentTransaction.getVendor().toLowerCase().contains(userVendor))){
                 flag = false;
             }
 
