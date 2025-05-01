@@ -170,6 +170,18 @@ public class Report {
                 flag = false;
             }
 
+            if (!userAmount.isEmpty()){
+                try{
+                    double searchAmount = Double.parseDouble(userAmount);
+                    if (currentTransaction.getAmount() != searchAmount){
+                        flag = false;
+                    }
+                }
+                catch (NumberFormatException e) {
+                    System.out.println("Please enter a correct number amount. Filter isn't added to your custom search");
+                }
+            }
+
 
 
         }
