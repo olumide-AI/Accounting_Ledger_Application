@@ -37,10 +37,11 @@ public class Main {
                     ;//Exit
                     flag = false;
                     break;
-
                 default:
                     System.out.println("Please enter option D,P,L or E");
             }
+            //Closed my scanner at the end of main
+            scanner.close();
         }
     }
 
