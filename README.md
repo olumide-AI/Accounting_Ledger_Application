@@ -75,6 +75,7 @@ is a challenge question that lets user filter transaction using any combination 
 **Note:** You can skip the fields you're not interested in.
 
 **Here is an image of the custom search screen:**
+![Custom Search Screen](images/CLI_app_customscreen.png)
 
 ## Project Structure
 - **Main.java:** Runs and tie in all applications together while managing user interface.
@@ -93,7 +94,6 @@ So the code checks:
 - If the current month is January, the previous month must be December (12).
 - And since we’re now reaching back into the previous year, the year must be reduced by 1 as well.
 
-**Paste interesting piece of code here**
 ```
     //Previous month filter
     //Edge case if jan 2025 - dec 2024
