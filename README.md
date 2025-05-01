@@ -128,13 +128,21 @@ So the code checks:
 ```
 
 ## How to run and test the program
-- Clone this repo.
+
+### Must haves:
+- Java 8 or higher 
+- Terminal
+- Git and Github for cloning 
+
+### Steps:
+- Clone this repo or download zip files.
 - Make sure you have a jvm installed on your computer. 
+- Open terminal to navigate project folder
 - Compile java files.
 - Create the **transactionFolder** in a reasonable path and create a **transaction.csv**
 to store data.
 - Run the main.java
-- You can start playing with application of your CLI 
+- You can start testing the application on your terminal 
 
 
 ## Author
