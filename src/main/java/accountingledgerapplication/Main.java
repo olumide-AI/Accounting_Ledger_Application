@@ -5,12 +5,12 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Main {
+    //Initialize Scanner at a class level
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-
-
         //Create a main Home screen
+        //Main entry point for application, route user input to appropriate actions
         boolean flag = true;
         while (flag) {
             System.out.println("Welcome to the Home screen");
@@ -44,7 +44,7 @@ public class Main {
         //Closed my scanner at the end of main
         scanner.close();
     }
-
+    // Ledge menu displays that lets user choose their specific type of entry.
     public static void ledgerHomeScreen() {
         boolean flag = true;
 
@@ -82,6 +82,7 @@ public class Main {
     }
 
     //Reports Screen
+    //Displays Report menu based on user input with options for custom or predefined
     public static void reportHomeScreen() {
         boolean flag = true;
         while (flag) {
@@ -140,7 +141,7 @@ public class Main {
         return addTransactionDetails(false);
     }
 
-    //Error handling, Input validation
+    //Error handling, Input validation, prompts user to input all necessary transaction fields
     public static Transaction addTransactionDetails(boolean isDeposit) {
         String transactionDate;
         while (true) {
