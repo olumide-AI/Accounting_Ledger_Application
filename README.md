@@ -6,6 +6,7 @@
 - [Home Screen](#home-screen)
 - [Ledger Screen](#ledger-screen)
 - [Report Screen](#report-screen)
+- [Custom Search Screen](#custom-search-screen)
 - [Project Structure](#project-structure)
 - [Interesting piece of Code](#interesting-piece-of-code)
 - [How to Run](#how-to-run-and-test-the-program)
@@ -14,17 +15,21 @@
 The Project is a CLI application to track all financial transactions
 for a business or personal use. All transactions are read and saved 
 to a csv file with the following items:
-- date
-- time
-- description 
-- vendor 
-- amount 
+- Date
+- Time
+- Description 
+- Vendor 
+- Amount 
 
 The application allows user to:
 - Record their deposit and debit payment to a transaction file
 - View a ledger of all transactions
-- Generate specific reports based on (Month-to-Date, Previous Month, Year-to-Date,
-Previous Year, and vendor name)
+- Generate specific reports based for:
+  - Month-to-Date
+  - Previous Month
+  - Year-to-Date
+  - Previous Year
+  - Vendor transactions
 
 ## Features Includes:
 
@@ -53,10 +58,23 @@ Previous Year, and vendor name)
 - **3** to display Year-to-Date transactions
 - **4** to display previous year transactions
 - **5** to search by vendor name
+- **6** to customize search
 - **0** to return to the ledger screen
 
 *Here is a image of my ledger screen:*
 ![Report Screen](images/CLI_app_reportscreen.png)
+
+### Custom Search Screen
+is a challenge question that lets user filter transaction using any combination of the following fields.:
+- Start Date 
+- End Date 
+- Description 
+- Vendor 
+- Amount
+
+**Note:** You can skip the fields you're not interested in.
+
+**Here is an image of the custom search screen:**
 
 ## Project Structure
 - **Main.java:** Runs and tie in all applications together while managing user interface.
