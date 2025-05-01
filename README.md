@@ -1,5 +1,15 @@
 # Accounting Ledger Application
 
+## Table of contents
+- [Project Description](#project-description)
+- [Features](#features-includes)
+- [Home Screen](#home-screen)
+- [Ledger Screen](#ledger-screen)
+- [Report Screen](#report-screen)
+- [Project Structure](#project-structure)
+- [Interesting piece of Code](#interesting-piece-of-code)
+- [How to Run](#how-to-run-and-test-the-program)
+
 ## Project Description
 The Project is a CLI application to track all financial transactions
 for a business or personal use. All transactions are read and saved 
@@ -25,6 +35,7 @@ Previous Year, and vendor name)
 - **E** to exit the application
 
 *Here is a image of my Home Screen:*
+![Home Screen](images/CLI_app_homescreen.png)
 
 ### Ledger Screen
 - **A** to display all transactions
@@ -34,6 +45,7 @@ Previous Year, and vendor name)
 - **H** to return to the home screen
 
 *Here is a image of my ledger screen:*
+![Ledger Screen](images/CLI_app_ledgerscreen.png)
 
 ### Report Screen
 - **1** to display Month-to-Date transactions
@@ -44,6 +56,7 @@ Previous Year, and vendor name)
 - **0** to return to the ledger screen
 
 *Here is a image of my ledger screen:*
+![Report Screen](images/CLI_app_reportscreen.png)
 
 ## Project Structure
 - **Main.java:** Runs and tie in all applications together while managing user interface.
@@ -63,6 +76,38 @@ So the code checks:
 - And since we’re now reaching back into the previous year, the year must be reduced by 1 as well.
 
 **Paste interesting piece of code here**
+```
+    //Previous month filter
+    //Edge case if jan 2025 - dec 2024
+    public static void displayPreviousMonthEntries() {
+        List<Transaction> transactionList = FileHandler.readAllTransactions();
+        LocalDate todayDate = LocalDate.now();
+        //Case to handle if we're in January 2025 and previous year is december 2024
+        int previousMonth;
+        int yearOfPreviousMonth;
+        //int lastMonth = todayDate.minusMonths(1).getMonthValue();
+        //If we're in the first month of the year
+        if (todayDate.getMonthValue() == 1){
+            //we can just set our previous month to Dec which is 12
+            previousMonth = 12;
+            //then the year of december will be 2024, last year
+            yearOfPreviousMonth = todayDate.getYear() -1; //will give us 2024 in our example
+        }
+        else {
+            //If it's not january of a new year, previous month is just
+            //today's month minus 1
+            previousMonth = todayDate.getMonthValue() -1;
+            yearOfPreviousMonth = todayDate.getYear();
+        }
+        System.out.println("Transactions for previous month: ");
+        for (Transaction transaction : transactionList) {
+            if (transaction.getDate().getYear() == yearOfPreviousMonth && transaction.getDate().getMonthValue() == previousMonth) {
+                System.out.println(transaction.displayTransactionFormat());
+            }
+        }
+    }
+
+```
 
 ## How to run and test the program
 - Clone this repo.
@@ -73,8 +118,6 @@ to store data.
 - Run the main.java
 - You can start playing with application of your CLI 
 
-## Upcoming changes
-- On the reports screen add another option for a custom search.
 
 ## Author
 Olumide Kolawole (Year-Up, App dev)
