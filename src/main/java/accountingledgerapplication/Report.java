@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Report {
-
-    //Custom search to filter from month to date
+    //Displays transaction only for the current month.
     public static void displayMonthToDateEntries(){
         //Reads all file from csv file
         List<Transaction> transactionList = FileHandler.readAllTransactions();
@@ -22,7 +21,7 @@ public class Report {
         }
     }
 
-    //Previous month filter
+    //Previous month filter, displays transaction from the previous calendar month.
     //Edge case if jan 2025 - dec 2024
     public static void displayPreviousMonthEntries() {
         List<Transaction> transactionList = FileHandler.readAllTransactions();
@@ -52,7 +51,7 @@ public class Report {
         }
     }
 
-    //year to date filter
+    //Displays transaction that occurred this current year
     public static void displayYearToDateEntries(){
         List<Transaction> transactionList = FileHandler.readAllTransactions();
         int currentYear = LocalDate.now().getYear();
@@ -62,10 +61,9 @@ public class Report {
                 System.out.println(transaction.displayTransactionFormat());
             }
         }
-
     }
 
-    //Filter for Previous year
+    //Displays all transactions from previous calendar year
     public static void  previousYearEntries(){
         List<Transaction> transactionList = FileHandler.readAllTransactions();
         //Because date is an integer
@@ -78,7 +76,7 @@ public class Report {
         }
     }
 
-    //Custom search by vendor name
+    //Custom search by vendor name, uses scanner to get user input.
     //Use .equals or if a line contains this user input print it out
     public static void searchByVendor(Scanner scanner){
         System.out.println("What is the vendor name to search: ");
@@ -91,8 +89,7 @@ public class Report {
             }
         }
     }
-    // Method for custom search
-    //Do i create a custom search method
+    // Method for custom search based on any combination of fields.
     public static void customSearch(Scanner scanner){
         System.out.println("Custom Search: 'Leave blank space in scanner input not to use a custom field' ");
         System.out.println("By Start Date (YYYY-MM-DD): ");
