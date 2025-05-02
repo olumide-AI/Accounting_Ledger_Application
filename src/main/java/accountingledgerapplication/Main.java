@@ -154,7 +154,7 @@ public class Main {
                 System.out.println("Invalid date format. Please use yyyy-mm-dd");
             }
         }
-        System.out.println("Enter transaction time  (HH:MM): ");
+        System.out.println("Enter transaction time in 24hr format (HH:MM): ");
         String transactionTime = scanner.nextLine().trim();
 
         String transactionDescription;
