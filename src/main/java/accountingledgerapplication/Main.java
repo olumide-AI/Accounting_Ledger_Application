@@ -14,8 +14,8 @@ public class Main {
         //Main entry point for application, route user input to appropriate actions
         boolean flag = true;
         while (flag) {
-            System.out.println("Welcome to the Home screen");
-            System.out.println("Please select the following options");
+            System.out.println("Welcome to the Home Screen");
+            System.out.println("\nPlease select the following options:");
             System.out.println("D - Add deposit information");
             System.out.println("P - Make debit payment");
             System.out.println("L - Display ledger screen");
@@ -39,7 +39,7 @@ public class Main {
                     flag = false;
                     break;
                 default:
-                    System.out.println("Please enter option D,P,L or E");
+                    System.out.println("Please enter option D,P,L or E\n");
             }
         }
         //Closed my scanner at the end of main
@@ -208,7 +208,7 @@ public class Main {
         if (!isDeposit){
             transactionAmount = -1 * transactionAmount;
         }
-        System.out.println("Transaction has been added to your transaction file");
+        System.out.println("Transaction has been added to your transaction file\n");
         return  new Transaction(transactionDate, transactionTime, transactionDescription, transactionVendor,transactionAmount);
     }
 
