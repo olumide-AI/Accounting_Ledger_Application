@@ -16,7 +16,7 @@ public class Report {
         //For each loop makes it so i don't use get(i) makes code shorter
         for (Transaction transaction : transactionList) {
             if (transaction.getDate().getMonth() == todayDate.getMonth() && transaction.getDate().getYear() == todayDate.getYear()) {
-                System.out.println(transaction.displayTransactionFormat());
+                System.out.println(transaction.displayTransactionFormat() + "\n");
             }
         }
     }
@@ -46,7 +46,7 @@ public class Report {
         System.out.println("Transactions for previous month: ");
         for (Transaction transaction : transactionList) {
             if (transaction.getDate().getYear() == yearOfPreviousMonth && transaction.getDate().getMonthValue() == previousMonth) {
-                System.out.println(transaction.displayTransactionFormat());
+                System.out.println(transaction.displayTransactionFormat() + "\n");
             }
         }
     }
@@ -58,7 +58,7 @@ public class Report {
         System.out.println("Transaction for year " + currentYear);
         for (Transaction transaction : transactionList){
             if (transaction.getDate().getYear() == LocalDate.now().getYear()){
-                System.out.println(transaction.displayTransactionFormat());
+                System.out.println(transaction.displayTransactionFormat() + "\n");
             }
         }
     }
@@ -71,7 +71,7 @@ public class Report {
         System.out.println("Transactions for the last year: ");
         for (Transaction transaction : transactionList){
             if (transaction.getDate().getYear() == previousYear){
-                System.out.println(transaction.displayTransactionFormat());
+                System.out.println(transaction.displayTransactionFormat() + "\n");
             }
         }
     }
@@ -82,10 +82,10 @@ public class Report {
         System.out.println("What is the vendor name to search: ");
         String userVendorName = scanner.nextLine().toLowerCase();
         List<Transaction> transactionList = FileHandler.readAllTransactions();
-        System.out.println("Here is all the transaction entries for" + userVendorName + " : ");
+        System.out.println("Here is all the transaction entries for " + userVendorName + " : ");
         for (Transaction transaction : transactionList) {
             if (transaction.getVendor().toLowerCase().contains(userVendorName)) {
-                System.out.println(transaction.displayTransactionFormat());
+                System.out.println(transaction.displayTransactionFormat() + "\n");
             }
         }
     }
@@ -181,7 +181,7 @@ public class Report {
             }
             //If flag comes out to be true
             if (flag){
-                System.out.println(currentTransaction.displayTransactionFormat());
+                System.out.println(currentTransaction.displayTransactionFormat() + "\n");
             }
         }
     }

@@ -9,7 +9,7 @@ public class Ledger {
         List<Transaction> transactionList = FileHandler.readAllTransactions();
         System.out.println("Here is all the transaction for your account: ");
         for (Transaction transaction : transactionList) {
-            System.out.println(transaction.displayTransactionFormat());
+            System.out.println(transaction.displayTransactionFormat() + "\n");
         }
     }
 
@@ -19,7 +19,7 @@ public class Ledger {
         System.out.println("Here is all the Deposit transaction entries for your account: ");
         for (Transaction transaction : transactionList) {
             if (transaction.getAmount() > 0) {
-                System.out.println(transaction.displayTransactionFormat());
+                System.out.println(transaction.displayTransactionFormat() + "\n");
             }
         }
     }
@@ -30,7 +30,7 @@ public class Ledger {
         System.out.println("Here is all the Debit transaction entries for your account: ");
         for (Transaction transaction : transactionList) {
             if (transaction.getAmount() < 0) {
-                System.out.println(transaction.displayTransactionFormat());
+                System.out.println(transaction.displayTransactionFormat() + "\n");
             }
         }
     }
