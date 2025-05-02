@@ -1,6 +1,7 @@
 package accountingledgerapplication;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
@@ -151,11 +152,22 @@ public class Main {
                 LocalDate.parse(transactionDate);
                 break;
             } catch (DateTimeParseException e) {
-                System.out.println("Invalid date format. Please use yyyy-mm-dd");
+                System.out.println("Invalid date format. Please use yyyy-mm-dd (Ex. 2025-05-02) ");
             }
         }
-        System.out.println("Enter transaction time in 24hr format (HH:MM): ");
-        String transactionTime = scanner.nextLine().trim();
+        String transactionTime;
+        while(true){
+            System.out.println("Enter transaction time in 24hr format (HH:MM): ");
+            transactionTime = scanner.nextLine().trim();
+            try{
+                //Parse date to validate time format
+                LocalTime.parse(transactionTime);
+                break;
+            }
+            catch (DateTimeParseException e){
+                System.out.println("Invalid time format. Please use 24 hr time clock format (Ex. 14:30)");
+            }
+        }
 
         String transactionDescription;
         while (true){
