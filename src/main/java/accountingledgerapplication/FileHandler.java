@@ -5,8 +5,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+//import java.util.Collections;
+//Use import if we want to sort entries by user input
+
 
 public class FileHandler {
     private static final String FILE_PATH = "transactionFolder/transaction.csv";
