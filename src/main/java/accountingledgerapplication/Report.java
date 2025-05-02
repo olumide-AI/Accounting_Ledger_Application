@@ -12,7 +12,7 @@ public class Report {
         List<Transaction> transactionList = FileHandler.readAllTransactions();
         //Create today's time from system clock
         LocalDate todayDate = LocalDate.now();
-        System.out.println("Transactions for this month so far:");
+        System.out.println("Transactions for this month so far (" + todayDate.getMonth() + "):");
         //For each loop makes it so i don't use get(i) makes code shorter
         for (Transaction transaction : transactionList) {
             if (transaction.getDate().getMonth() == todayDate.getMonth() && transaction.getDate().getYear() == todayDate.getYear()) {
@@ -43,7 +43,7 @@ public class Report {
             previousMonth = todayDate.getMonthValue() -1;
             yearOfPreviousMonth = todayDate.getYear();
         }
-        System.out.println("Transactions for previous month: ");
+        System.out.println("Transactions for previous month (" + LocalDate.now().minusMonths(1) + "): ");
         for (Transaction transaction : transactionList) {
             if (transaction.getDate().getYear() == yearOfPreviousMonth && transaction.getDate().getMonthValue() == previousMonth) {
                 System.out.println(transaction.displayTransactionFormat() + "\n");
@@ -68,7 +68,7 @@ public class Report {
         List<Transaction> transactionList = FileHandler.readAllTransactions();
         //Because date is an integer
         int previousYear = LocalDate.now().getYear() -1;
-        System.out.println("Transactions for the last year: ");
+        System.out.println("Transactions for the last year (" + LocalDate.now().minusYears(1).getYear() + "): ");
         for (Transaction transaction : transactionList){
             if (transaction.getDate().getYear() == previousYear){
                 System.out.println(transaction.displayTransactionFormat() + "\n");
@@ -82,7 +82,7 @@ public class Report {
         System.out.println("What is the vendor name to search: ");
         String userVendorName = scanner.nextLine().toLowerCase();
         List<Transaction> transactionList = FileHandler.readAllTransactions();
-        System.out.println("Here is all the transaction entries for " + userVendorName + " : ");
+        System.out.println("Here is all the transaction entries for " + userVendorName.toUpperCase() + " : ");
         for (Transaction transaction : transactionList) {
             if (transaction.getVendor().toLowerCase().contains(userVendorName)) {
                 System.out.println(transaction.displayTransactionFormat() + "\n");

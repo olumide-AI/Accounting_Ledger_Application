@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 //import java.util.Collections;
-//Use import if we want to sort entries by user input
+//Use import if we want to sort entries by user input and comment out date sort
 
 
 public class FileHandler {
