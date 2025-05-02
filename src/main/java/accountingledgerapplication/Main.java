@@ -34,7 +34,7 @@ public class Main {
                     ledgerHomeScreen();
                     break;
                 case "E":
-                    System.out.println("Thank you, goodbye");
+                    System.out.println("Thank you, GoodBye");
                     ;//Exit
                     flag = false;
                     break;
