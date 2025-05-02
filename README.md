@@ -133,6 +133,7 @@ So the code checks:
 - Java 8 or higher 
 - Terminal
 - Git and Github for cloning 
+- Works on Window, MacOS or Linux with terminal access
 
 ### Steps:
 - Clone this repo or download zip files.
@@ -144,7 +145,10 @@ to store data.
 - Run the main.java
 - You can start testing the application on your terminal 
 
+## Support
+Email: okolawole@my.yearupunited.org
+
 
 ## Author
-Olumide Kolawole (Year-Up, App dev)
+Olumide Kolawole (Year-Up, App dev - Spring 2025)
 
