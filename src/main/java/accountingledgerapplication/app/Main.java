@@ -10,6 +10,8 @@ import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
+import static accountingledgerapplication.ui.AppHomeScreen.scanner;
+
 public class Main {
     //Initialize Scanner at a class level
     public static void main(String[] args) {

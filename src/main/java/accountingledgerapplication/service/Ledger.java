@@ -7,6 +7,18 @@ import java.util.List;
 
 public class Ledger {
 
+    //Method displaying all balance
+    public static void displayBalance() {
+        List<Transaction> transactionList = FileHandler.readAllTransactions();
+        double balance = 0.0;
+
+        for (Transaction transaction : transactionList) {
+            balance += transaction.getAmount();
+        }
+
+        System.out.printf("Current Account Balance: $%.2f%n", balance);
+    }
+
     //Ledger displays all entries, so we read from the csv file using buffered reader method
     public static void displayAllEntries(){
         List<Transaction> transactionList = FileHandler.readAllTransactions();

@@ -2,6 +2,7 @@ package accountingledgerapplication.ui;
 
 import accountingledgerapplication.model.Transaction;
 import accountingledgerapplication.repository.FileHandler;
+import accountingledgerapplication.service.Ledger;
 
 import java.util.Scanner;
 
@@ -19,6 +20,7 @@ public class AppHomeScreen {
             System.out.println("D - Add deposit information");
             System.out.println("P - Make debit payment");
             System.out.println("L - Display ledger screen");
+            System.out.println("B - View current balance");
             System.out.println("E - Exit the application");
             String userInputHomeScreen = scanner.nextLine().toUpperCase().trim();
 
@@ -34,12 +36,15 @@ public class AppHomeScreen {
                 case "L":
                     ledgerHomeScreen(); // Consider moving this to its own class too
                     break;
+                case "B":
+                    Ledger.displayBalance(); // ← Call the balance method
+                    break;
                 case "E":
                     System.out.println("Thank you, Goodbye");
                     flag = false;
                     break;
                 default:
-                    System.out.println("Please enter option D, P, L, or E\n");
+                    System.out.println("Please enter option D, P, L, B, or E\n");
             }
         }
 
