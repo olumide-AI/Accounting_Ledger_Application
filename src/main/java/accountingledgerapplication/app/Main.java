@@ -13,6 +13,7 @@ import java.util.Scanner;
 import static accountingledgerapplication.ui.AppHomeScreen.scanner;
 
 public class Main {
+
     //Initialize Scanner at a class level
     static Scanner scanner = new Scanner(System.in);
 
