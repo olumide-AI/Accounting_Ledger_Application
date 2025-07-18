@@ -12,9 +12,7 @@ import java.util.Scanner;
 
 public class Main {
     //Initialize Scanner at a class level
-    public static void main(String[] args) {
-       new AppHomeScreen().run();
-        }
+    static Scanner scanner = new Scanner(System.in);
 
     // Ledge menu displays that lets user choose their specific type of entry.
     public static void ledgerHomeScreen() {
