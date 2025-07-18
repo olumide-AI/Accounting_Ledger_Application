@@ -9,7 +9,7 @@ import static accountingledgerapplication.app.Main.*;
 
 public class AppHomeScreen {
 
-    static Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
 
     public void run() {
         boolean flag = true;

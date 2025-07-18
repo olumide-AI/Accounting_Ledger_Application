@@ -28,7 +28,7 @@ public class Main {
             System.out.println("P - Display debit payment entries");
             System.out.println("R - Display custom report screen");
             System.out.println("H - Go back to the Home screen");
-            String userInputLedger = scanner.nextLine().toUpperCase().trim();
+            String userInputLedger = AppHomeScreen.scanner.nextLine().toUpperCase().trim();
             switch (userInputLedger) {
                 case "A":
                     Ledger.displayAllEntries();
@@ -67,7 +67,7 @@ public class Main {
             System.out.println("5 - To search by vendor");
             System.out.println("6 - Customize transaction search");
             System.out.println("0 - Go back to the Ledger screen"); //The book says report
-            String userInputReport = scanner.nextLine().trim();
+            String userInputReport = AppHomeScreen.scanner.nextLine().trim();
 
             switch (userInputReport) {
                 case "1":
@@ -83,10 +83,10 @@ public class Main {
                     Report.previousYearEntries();
                     break;
                 case "5":
-                    Report.searchByVendor(scanner);
+                    Report.searchByVendor(AppHomeScreen.scanner);
                     break;
                 case "6":
-                    Report.customSearch(scanner);
+                    Report.customSearch(AppHomeScreen.scanner);
                     break;
                 case "0":
                     flag = false;
@@ -117,7 +117,7 @@ public class Main {
         String transactionDate;
         while (true) {
             System.out.println("Enter transaction date (YYYY-MM-DD): ");
-            transactionDate = scanner.nextLine().trim();
+            transactionDate = AppHomeScreen.scanner.nextLine().trim();
             try {
                 LocalDate.parse(transactionDate);
                 break;
@@ -128,7 +128,7 @@ public class Main {
         String transactionTime;
         while(true){
             System.out.println("Enter transaction time in 24hr format (HH:MM): ");
-            transactionTime = scanner.nextLine().trim();
+            transactionTime = AppHomeScreen.scanner.nextLine().trim();
             try{
                 //Parse date to validate time format
                 LocalTime.parse(transactionTime);
@@ -142,7 +142,7 @@ public class Main {
         String transactionDescription;
         while (true){
             System.out.println("Enter transaction description: ");
-            transactionDescription = scanner.nextLine().trim();
+            transactionDescription = AppHomeScreen.scanner.nextLine().trim();
             //transaction description is not empty
             if(!transactionDescription.isEmpty())
             {
@@ -153,7 +153,7 @@ public class Main {
         String transactionVendor;
         while(true){
             System.out.println("Enter transaction vendor: ");
-            transactionVendor = scanner.nextLine().trim().toLowerCase();
+            transactionVendor = AppHomeScreen.scanner.nextLine().trim().toLowerCase();
             if(!transactionVendor.isEmpty()){
                 break;
             }
@@ -163,7 +163,7 @@ public class Main {
         while(true){
             System.out.println("Enter transaction amount: ");
             try{
-                transactionAmount = Double.parseDouble(scanner.nextLine().trim());
+                transactionAmount = Double.parseDouble(AppHomeScreen.scanner.nextLine().trim());
                 if(transactionAmount <=0){
                     System.out.println("Transaction amount has to be a positive number ");
                 }
