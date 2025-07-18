@@ -14,7 +14,9 @@ import static accountingledgerapplication.ui.AppHomeScreen.scanner;
 
 public class Main {
     //Initialize Scanner at a class level
-    static Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
+       new AppHomeScreen().run();
+        }
 
     // Ledge menu displays that lets user choose their specific type of entry.
     public static void ledgerHomeScreen() {
