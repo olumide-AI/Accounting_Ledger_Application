@@ -8,43 +8,10 @@ import java.util.Scanner;
 public class Main {
     //Initialize Scanner at a class level
     static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
-        //Create a main Home screen
-        //Main entry point for application, route user input to appropriate actions
-        boolean flag = true;
-        while (flag) {
-            System.out.println("Welcome to the Home Screen");
-            System.out.println("\nPlease select the following options:");
-            System.out.println("D - Add deposit information");
-            System.out.println("P - Make debit payment");
-            System.out.println("L - Display ledger screen");
-            System.out.println("E - Exit the application");
-            String userInputHomeScreen = scanner.nextLine().toUpperCase().trim();
-            switch (userInputHomeScreen) {
-                case "D":
-                    Transaction userDeposit = addDepositInformation();
-                    FileHandler.writeTransactionsToFile(userDeposit);
-                    break;
-                case "P":
-                    Transaction userDebitPayment = addDebitPaymentInformation();
-                    FileHandler.writeTransactionsToFile(userDebitPayment);
-                    break;
-                case "L":
-                    ledgerHomeScreen();
-                    break;
-                case "E":
-                    System.out.println("Thank you, GoodBye");
-                    ;//Exit
-                    flag = false;
-                    break;
-                default:
-                    System.out.println("Please enter option D,P,L or E\n");
-            }
+       new AppHomeScreen().run();
         }
-        //Closed my scanner at the end of main
-        scanner.close();
-    }
+
     // Ledge menu displays that lets user choose their specific type of entry.
     public static void ledgerHomeScreen() {
         boolean flag = true;
@@ -135,7 +102,6 @@ public class Main {
         return addTransactionDetails(true);
     }
 
-
     //Debit payment information (will include "-" price)
     //We can call the writeTransactionsToFile() method to write it into our csv file
     public static Transaction addDebitPaymentInformation() {
@@ -211,5 +177,7 @@ public class Main {
         System.out.println("Transaction has been added to your transaction file\n");
         return  new Transaction(transactionDate, transactionTime, transactionDescription, transactionVendor,transactionAmount);
     }
-
 }
+
+
+
