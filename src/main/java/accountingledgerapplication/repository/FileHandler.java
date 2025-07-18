@@ -1,4 +1,6 @@
-package accountingledgerapplication;
+package accountingledgerapplication.repository;
+
+import accountingledgerapplication.model.Transaction;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
