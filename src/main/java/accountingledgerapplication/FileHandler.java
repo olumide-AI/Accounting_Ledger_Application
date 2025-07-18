@@ -22,7 +22,7 @@ public class FileHandler {
     }
 
     //Read transaction from transaction file
-    public static List<Transaction> readAllTransactions(){
+    public static List<Transaction> readAllTransactions() {
         //Create an empty list that will eventually store all transaction
         //read from the file
         List<Transaction> transactionList = new ArrayList<>();
