@@ -1,6 +1,9 @@
-package accountingledgerapplication;
+package accountingledgerapplication.ui;
 
-import static accountingledgerapplication.Main.*;
+import accountingledgerapplication.model.Transaction;
+import accountingledgerapplication.repository.FileHandler;
+
+import static accountingledgerapplication.app.Main.*;
 
 public class AppHomeScreen {
 
