@@ -3,9 +3,13 @@ package accountingledgerapplication.ui;
 import accountingledgerapplication.model.Transaction;
 import accountingledgerapplication.repository.FileHandler;
 
+import java.util.Scanner;
+
 import static accountingledgerapplication.app.Main.*;
 
 public class AppHomeScreen {
+
+    static Scanner scanner = new Scanner(System.in);
 
     public void run() {
         boolean flag = true;
