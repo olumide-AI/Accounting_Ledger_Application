@@ -13,8 +13,8 @@ public class Transaction {
 
     //Create constructor
     public Transaction(String date, String time, String description, String vendor, double amount){
-        this.date = LocalDate.parse(date);
-        this.time = LocalTime.parse(time);
+        this.date = LocalDate.now();
+        this.time = LocalTime.now().withNano(0);
         this.description = description;
         this.vendor = vendor;
         this.amount = amount;
